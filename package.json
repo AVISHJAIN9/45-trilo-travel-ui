@@ -1,0 +1,29 @@
+{
+  "name": "trilo-travel-ui",
+  "version": "1.0.0",
+  "description": "Modern travel booking destination explorer & flight interface built with Sass 7-1 pattern and modern Vanilla JS",
+  "type": "module",
+  "scripts": {
+    "start": "npx serve -l 5183 .",
+    "docs:dev": "vitepress dev docs --port 5184",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs --port 5184"
+  },
+  "keywords": [
+    "trillo",
+    "travel-booking",
+    "sass-7-1",
+    "flexbox",
+    "vanilla-js",
+    "svg-sprite",
+    "responsive-design"
+  ],
+  "author": "Avish Jain",
+  "license": "MIT",
+  "devDependencies": {
+    "mermaid": "^11.17.2",
+    "serve": "^14.2.6",
+    "vitepress": "^1.6.4",
+    "vitepress-plugin-mermaid": "^2.0.17"
+  }
+}
