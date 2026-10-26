@@ -1,0 +1,19 @@
+// ==========================================================================
+// TRILLO TRAVEL UI - MAIN SASS MANIFEST (7-1 PATTERN)
+// ==========================================================================
+
+// 1. Abstracts
+@import "abstracts/variables";
+
+// 2. Base
+@import "base/typography";
+
+// 3. Layout
+@import "layout/header";
+@import "layout/navigation";
+
+// 4. Components
+@import "components/hotel-view";
+@import "components/review";
+@import "components/booking-cta";
+@import "components/modal";

@@ -1,0 +1,282 @@
+// ==========================================================================
+// TRILLO TRAVEL UI - COMPONENTS: HOTEL VIEW & DETAILS
+// ==========================================================================
+
+.container {
+  max-width: var(--container-max-width);
+  margin: 8rem auto;
+  background-color: var(--color-grey-light-2);
+  box-shadow: var(--shadow-dark);
+  min-height: 50rem;
+  border-radius: 6px;
+  overflow: hidden;
+
+  @media only screen and (max-width: 75em) {
+    margin: 0;
+    max-width: 100%;
+    width: 100%;
+    border-radius: 0;
+  }
+}
+
+.content {
+  display: flex;
+
+  @media only screen and (max-width: 56.25em) {
+    flex-direction: column;
+  }
+}
+
+.hotel-view {
+  background-color: var(--color-white);
+  flex: 1;
+}
+
+// --------------------------------------------------------------------------
+// Photo Gallery
+// --------------------------------------------------------------------------
+.gallery {
+  display: flex;
+
+  &__item {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    max-height: 22rem;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease, filter 0.4s ease;
+
+    &:hover {
+      transform: scale(1.08);
+      filter: brightness(1.05);
+    }
+  }
+
+  &__caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    color: var(--color-white);
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: all 0.3s ease;
+  }
+
+  &__item:hover &__caption {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// --------------------------------------------------------------------------
+// Overview Bar
+// --------------------------------------------------------------------------
+.overview {
+  display: flex;
+  align-items: center;
+  border-bottom: var(--line);
+  background-color: var(--color-white);
+
+  &__heading {
+    font-size: 2.25rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 1.5rem 3rem;
+
+    @media only screen and (max-width: 37.5em) {
+      font-size: 1.8rem;
+      padding: 1.25rem 2rem;
+    }
+  }
+
+  &__stars {
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+
+  &__icon-star,
+  &__icon-location {
+    width: 1.75rem;
+    height: 1.75rem;
+    fill: var(--color-primary);
+  }
+
+  &__location {
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-right: 3rem;
+
+    @media only screen and (max-width: 37.5em) {
+      margin-right: 1.5rem;
+    }
+  }
+
+  &__rating {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    margin-left: 1rem;
+    padding: 0 2.25rem;
+    align-self: stretch;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @media only screen and (max-width: 37.5em) {
+      padding: 0 1.5rem;
+    }
+  }
+
+  &__rating-average {
+    font-size: 2.25rem;
+    font-weight: 300;
+    margin-bottom: -3px;
+
+    @media only screen and (max-width: 37.5em) {
+      font-size: 1.8rem;
+    }
+  }
+
+  &__rating-count {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+
+    @media only screen and (max-width: 37.5em) {
+      font-size: 0.65rem;
+    }
+  }
+}
+
+// --------------------------------------------------------------------------
+// Detail Section
+// --------------------------------------------------------------------------
+.detail {
+  font-size: 1.4rem;
+  display: flex;
+  padding: 4.5rem;
+  background-color: var(--color-grey-light-1);
+  border-bottom: var(--line);
+
+  @media only screen and (max-width: 56.25em) {
+    padding: 3rem;
+  }
+
+  @media only screen and (max-width: 37.5em) {
+    flex-direction: column;
+  }
+}
+
+.description {
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-light);
+  padding: 3rem;
+  flex: 0 0 60%;
+  margin-right: 4.5rem;
+  border-radius: 4px;
+
+  @media only screen and (max-width: 56.25em) {
+    padding: 2rem;
+    margin-right: 3rem;
+  }
+
+  @media only screen and (max-width: 37.5em) {
+    margin-right: 0;
+    margin-bottom: 3rem;
+  }
+}
+
+.user-reviews {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+// Amenities Checklist List
+.list {
+  list-style: none;
+  margin: 3rem 0;
+  padding: 3rem 0;
+  border-top: var(--line);
+  border-bottom: var(--line);
+
+  display: flex;
+  flex-wrap: wrap;
+
+  &__item {
+    flex: 0 0 50%;
+    margin-bottom: 0.7rem;
+    display: flex;
+    align-items: center;
+  }
+
+  &__item::before {
+    content: "";
+    display: inline-block;
+    height: 1rem;
+    width: 1rem;
+    margin-right: 0.7rem;
+
+    // SVG icon mask background for CSS color inheritance
+    background-color: var(--color-primary);
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z'/%3E%3C/svg%3E");
+    -webkit-mask-size: cover;
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z'/%3E%3C/svg%3E");
+    mask-size: cover;
+  }
+}
+
+// Social Proof Recommend Pile
+.recommend {
+  font-size: 1.3rem;
+  color: var(--color-grey-dark-3);
+
+  display: flex;
+  align-items: center;
+
+  &__count {
+    margin-right: auto;
+  }
+
+  &__friends {
+    display: flex;
+  }
+
+  &__photo {
+    box-sizing: content-box;
+    height: 4rem;
+    width: 4rem;
+    border-radius: 50%;
+    border: 3px solid var(--color-white);
+    object-fit: cover;
+    transition: transform 0.2s;
+
+    &:not(:last-child) {
+      margin-right: -2rem;
+    }
+
+    &:hover {
+      transform: translateY(-3px) scale(1.1);
+      z-index: 5;
+    }
+  }
+}

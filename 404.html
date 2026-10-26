@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="Trillo - Luxury travel destination explorer, flight booking, and premier hotel accommodations interface built with modern CSS and Vanilla JS.">
+  <title>trillo &mdash; Your all-in-one booking app</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="shortcut icon" type="image/png" href="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=32&auto=format&fit=crop&q=80">
+</head>
+<body>
+  <!-- Embedded SVG Icons Sprite -->
+  <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <symbol id="icon-plane" viewBox="0 0 24 24">
+        <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
+      </symbol>
+      <symbol id="icon-home" viewBox="0 0 24 24">
+        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+      </symbol>
+      <symbol id="icon-key" viewBox="0 0 24 24">
+        <path d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/>
+      </symbol>
+      <symbol id="icon-map" viewBox="0 0 24 24">
+        <path d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5zM15 19l-6-2.11V5l6 2.11V19z"/>
+      </symbol>
+      <symbol id="icon-magnifying-glass" viewBox="0 0 24 24">
+        <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+      </symbol>
+      <symbol id="icon-bookmark" viewBox="0 0 24 24">
+        <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2z"/>
+      </symbol>
+      <symbol id="icon-chat" viewBox="0 0 24 24">
+        <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/>
+      </symbol>
+      <symbol id="icon-star" viewBox="0 0 24 24">
+        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+      </symbol>
+      <symbol id="icon-location-pin" viewBox="0 0 24 24">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+      </symbol>
+      <symbol id="icon-chevron-thin-right" viewBox="0 0 24 24">
+        <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+      </symbol>
+      <symbol id="icon-check" viewBox="0 0 24 24">
+        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+      </symbol>
+      <symbol id="icon-thumbs-up" viewBox="0 0 24 24">
+        <path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <div class="container" id="app">
+    <!-- Header -->
+    <header class="header">
+      <a href="#" class="logo" id="logoLink" title="Trillo Travel">
+        <svg class="logo__icon"><use xlink:href="#icon-plane"></use></svg>
+        <span>trillo</span>
+      </a>
+
+      <!-- Search Form -->
+      <form action="#" class="search" id="searchForm" onsubmit="event.preventDefault();">
+        <input 
+          type="text" 
+          class="search__input" 
+          id="searchInput" 
+          placeholder="Search hotels, flights, tours..." 
+          autocomplete="off"
+        >
+        <button class="search__button" id="searchBtn" aria-label="Submit search">
+          <svg class="search__icon"><use xlink:href="#icon-magnifying-glass"></use></svg>
+        </button>
+      </form>
+
+      <!-- User Navigation -->
+      <nav class="user-nav">
+        <!-- Bookmarks -->
+        <div class="user-nav__icon-box" id="bookmarkBtn" title="Saved Bookmarks" tabindex="0">
+          <svg class="user-nav__icon"><use xlink:href="#icon-bookmark"></use></svg>
+          <span class="user-nav__notification" id="bookmarkCount">7</span>
+
+          <div class="nav-dropdown" id="bookmarkDropdown">
+            <div class="nav-dropdown__header">
+              <span>Saved Properties</span>
+              <span id="savedCountLabel">7 Saved</span>
+            </div>
+            <ul class="nav-dropdown__list">
+              <li class="nav-dropdown__item">Hotel Las Palmas (Albufeira)</li>
+              <li class="nav-dropdown__item">Villa Bellagio (Lake Como)</li>
+              <li class="nav-dropdown__item">Grand Hyatt Santorini</li>
+              <li class="nav-dropdown__item">Ritz Carlton Kyoto</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Messages -->
+        <div class="user-nav__icon-box" id="chatBtn" title="Direct Inquiries" tabindex="0">
+          <svg class="user-nav__icon"><use xlink:href="#icon-chat"></use></svg>
+          <span class="user-nav__notification" id="chatCount">13</span>
+
+          <div class="nav-dropdown" id="chatDropdown">
+            <div class="nav-dropdown__header">
+              <span>Concierge Messages</span>
+              <span>2 Unread</span>
+            </div>
+            <ul class="nav-dropdown__list">
+              <li class="nav-dropdown__item"><strong>Concierge:</strong> Room upgrade confirmed.</li>
+              <li class="nav-dropdown__item"><strong>Support:</strong> Shuttle pickup at 14:00.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- User Profile -->
+        <div class="user-nav__user" id="userProfileBtn" title="Account Settings" tabindex="0">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Jonas Schmedtmann" class="user-nav__user-photo">
+          <span class="user-nav__user-name" id="userNameLabel">Jonas</span>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Content Layout -->
+    <div class="content">
+      <!-- Sidebar Navigation -->
+      <nav class="sidebar">
+        <ul class="side-nav" id="sidebarMenu">
+          <li class="side-nav__item side-nav__item--active" data-tab="hotel">
+            <a href="#hotel" class="side-nav__link">
+              <svg class="side-nav__icon"><use xlink:href="#icon-home"></use></svg>
+              <span>Hotel</span>
+            </a>
+          </li>
+          <li class="side-nav__item" data-tab="flight">
+            <a href="#flight" class="side-nav__link">
+              <svg class="side-nav__icon"><use xlink:href="#icon-plane"></use></svg>
+              <span>Flight</span>
+            </a>
+          </li>
+          <li class="side-nav__item" data-tab="car-rental">
+            <a href="#car" class="side-nav__link">
+              <svg class="side-nav__icon"><use xlink:href="#icon-key"></use></svg>
+              <span>Car rental</span>
+            </a>
+          </li>
+          <li class="side-nav__item" data-tab="tours">
+            <a href="#tours" class="side-nav__link">
+              <svg class="side-nav__icon"><use xlink:href="#icon-map"></use></svg>
+              <span>Tours</span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="legal">
+          &copy; 2026 by trilo. All rights reserved. Designed for premier travel exploration.
+        </div>
+      </nav>
+
+      <!-- Hotel Detail View -->
+      <main class="hotel-view" id="mainView">
+        <!-- Photo Gallery -->
+        <div class="gallery" id="galleryContainer">
+          <figure class="gallery__item" tabindex="0">
+            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&auto=format&fit=crop&q=80" alt="Hotel photo 1" class="gallery__photo" id="galleryPhoto1">
+            <figcaption class="gallery__caption">Main Ocean Infinity Pool</figcaption>
+          </figure>
+          <figure class="gallery__item" tabindex="0">
+            <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&auto=format&fit=crop&q=80" alt="Hotel photo 2" class="gallery__photo" id="galleryPhoto2">
+            <figcaption class="gallery__caption">Luxury King Terrace Suite</figcaption>
+          </figure>
+          <figure class="gallery__item" tabindex="0">
+            <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&auto=format&fit=crop&q=80" alt="Hotel photo 3" class="gallery__photo" id="galleryPhoto3">
+            <figcaption class="gallery__caption">Private Algarve Beachfront</figcaption>
+          </figure>
+        </div>
+
+        <!-- Overview Header Bar -->
+        <div class="overview">
+          <h1 class="overview__heading" id="propertyHeading">Hotel Las Palmas</h1>
+
+          <div class="overview__stars" id="starRatingGroup" aria-label="5 star rating">
+            <svg class="overview__icon-star"><use xlink:href="#icon-star"></use></svg>
+            <svg class="overview__icon-star"><use xlink:href="#icon-star"></use></svg>
+            <svg class="overview__icon-star"><use xlink:href="#icon-star"></use></svg>
+            <svg class="overview__icon-star"><use xlink:href="#icon-star"></use></svg>
+            <svg class="overview__icon-star"><use xlink:href="#icon-star"></use></svg>
+          </div>
+
+          <div class="overview__location">
+            <svg class="overview__icon-location"><use xlink:href="#icon-location-pin"></use></svg>
+            <button class="btn-inline" id="locationBtn">Albufeira, Portugal</button>
+          </div>
+
+          <div class="overview__rating">
+            <div class="overview__rating-average" id="ratingScore">8.6</div>
+            <div class="overview__rating-count" id="voteCountLabel">429 votes</div>
+          </div>
+        </div>
+
+        <!-- Details & Review Grid -->
+        <div class="detail">
+          <!-- Property Description -->
+          <div class="description" id="propertyDescription">
+            <p class="paragraph" id="descParagraph1">
+              Nestled along the sun-drenched clifftops of Albufeira, Hotel Las Palmas delivers world-class Mediterranean hospitality. Experience panoramic ocean views, Michelin-starred coastal dining, and immediate access to pristine sandy beaches.
+            </p>
+            <p class="paragraph" id="descParagraph2">
+              Every deluxe suite features handcrafted teak furnishings, a private oceanfront sun balcony, and personalized 24/7 concierge assistance designed for discerning global travelers.
+            </p>
+
+            <!-- Amenities Checklist -->
+            <ul class="list" id="amenitiesList">
+              <li class="list__item">Close to the beach</li>
+              <li class="list__item">Free breakfast included</li>
+              <li class="list__item">Free airport shuttle</li>
+              <li class="list__item">Free wifi in all rooms</li>
+              <li class="list__item">Air conditioning & heating</li>
+              <li class="list__item">Pets allowed</li>
+              <li class="list__item">We speak all languages</li>
+              <li class="list__item">Perfect for families</li>
+            </ul>
+
+            <!-- Social Proof Avatar Pile -->
+            <div class="recommend">
+              <p class="recommend__count" id="recommendCountText">
+                Lucy and 3 other friends recommend this hotel.
+              </p>
+              <div class="recommend__friends">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80" alt="Friend 1" class="recommend__photo">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80" alt="Friend 2" class="recommend__photo">
+                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&auto=format&fit=crop&q=80" alt="Friend 3" class="recommend__photo">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop&q=80" alt="Friend 4" class="recommend__photo">
+              </div>
+            </div>
+          </div>
+
+          <!-- User Reviews Column -->
+          <div class="user-reviews" id="userReviewsContainer">
+            <figure class="review" id="review1">
+              <blockquote class="review__text">
+                "Our stay at Hotel Las Palmas was nothing short of miraculous. The infinity pool overlooks the Atlantic cliffs and the private sunset dinner was unforgettable."
+              </blockquote>
+              <figcaption class="review__user">
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&auto=format&fit=crop&q=80" alt="Nick Smith" class="review__photo">
+                <div class="review__user-box">
+                  <p class="review__user-name">Nick Smith</p>
+                  <p class="review__user-date">Feb 23rd, 2026</p>
+                </div>
+                <div class="review__rating">7.8</div>
+              </figcaption>
+              <div class="review__actions">
+                <button class="review__helpful-btn" data-review="1" aria-label="Mark helpful">
+                  <svg style="width: 1.4rem; height: 1.4rem; fill: currentColor;"><use xlink:href="#icon-thumbs-up"></use></svg>
+                  <span>Helpful (<span class="helpful-count">14</span>)</span>
+                </button>
+              </div>
+            </figure>
+
+            <figure class="review" id="review2">
+              <blockquote class="review__text">
+                "Unbelievable staff and impeccable attention to detail. The complimentary airport limousine and express check-in made our family holiday seamless."
+              </blockquote>
+              <figcaption class="review__user">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&auto=format&fit=crop&q=80" alt="Mary Thomas" class="review__photo">
+                <div class="review__user-box">
+                  <p class="review__user-name">Mary Thomas</p>
+                  <p class="review__user-date">Sep 13th, 2025</p>
+                </div>
+                <div class="review__rating">9.3</div>
+              </figcaption>
+              <div class="review__actions">
+                <button class="review__helpful-btn" data-review="2" aria-label="Mark helpful">
+                  <svg style="width: 1.4rem; height: 1.4rem; fill: currentColor;"><use xlink:href="#icon-thumbs-up"></use></svg>
+                  <span>Helpful (<span class="helpful-count">31</span>)</span>
+                </button>
+              </div>
+            </figure>
+
+            <button class="btn-inline" id="allReviewsBtn">Show all reviews <span>&rarr;</span></button>
+          </div>
+        </div>
+
+        <!-- Booking Call To Action -->
+        <div class="cta">
+          <h2 class="cta__book-now" id="ctaHeading">
+            Good news! We have <span class="rooms-count" id="availableRoomsCount">4</span> free rooms for your selected dates!
+          </h2>
+          <button class="btn" id="openBookingModalBtn">
+            <span class="btn__visible">Book now</span>
+            <span class="btn__invisible">Only 4 rooms left</span>
+          </button>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Interactive Booking Modal Dialog -->
+  <div class="modal-overlay" id="bookingModalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <button class="modal__close" id="closeModalBtn" aria-label="Close booking modal">&times;</button>
+      <h3 class="modal__title" id="modalTitle">Reserve Your Stay</h3>
+      <p class="modal__subtitle">Guaranteed lowest rate with instant confirmation</p>
+
+      <form class="modal__form" id="bookingForm">
+        <div class="modal__form-group">
+          <label class="modal__label" for="bookingDestination">Destination / Property</label>
+          <input type="text" id="bookingDestination" class="modal__input" value="Hotel Las Palmas (Albufeira)" readonly>
+        </div>
+
+        <div class="modal__form-group">
+          <label class="modal__label" for="bookingDates">Check-In Date</label>
+          <input type="date" id="bookingDates" class="modal__input" required>
+        </div>
+
+        <div class="modal__form-group">
+          <label class="modal__label" for="roomType">Room Tier</label>
+          <select id="roomType" class="modal__select">
+            <option value="180">Deluxe Terrace Suite ($180 / night)</option>
+            <option value="260">Cliffside Infinity Villa ($260 / night)</option>
+            <option value="390">Presidential Penthouse ($390 / night)</option>
+          </select>
+        </div>
+
+        <div class="modal__form-group">
+          <label class="modal__label" for="guestCount">Guests</label>
+          <select id="guestCount" class="modal__select">
+            <option value="1">1 Adult</option>
+            <option value="2" selected>2 Adults</option>
+            <option value="3">2 Adults + 1 Child</option>
+            <option value="4">4 Guests (Family Suite)</option>
+          </select>
+        </div>
+
+        <div class="modal__summary">
+          <span>Estimated Total (3 Nights):</span>
+          <strong id="estimatedTotalAmount">$540 USD</strong>
+        </div>
+
+        <button type="submit" class="modal__submit-btn" id="confirmReservationBtn">
+          Confirm Instant Booking
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification Feedback -->
+  <div class="toast" id="globalToast" role="status" aria-live="polite">
+    <svg class="toast__icon"><use xlink:href="#icon-check"></use></svg>
+    <span id="toastMessage">Reservation confirmed! We sent an itinerary to your email.</span>
+  </div>
+
+  <!-- Main JavaScript Logic -->
+  <script src="js/main.js"></script>
+</body>
+</html>
